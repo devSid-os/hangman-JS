@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Using JS</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <main>
+
+        <div id="main-div">
+            <!-- HANGMAN IMAGE DIV -->
+            <div id="hangman-image-div">
+                <img src="./hangman-game-images/images/hangman-0.svg" alt="">
+            </div>
+            <!-- KEY STROKE DIV -->
+            <div id="key-stroke-div">
+
+                <!-- INCORRECT GUESS DIV -->
+                <div id="incorrect-guess-div">
+                    <p>Incorrect Guesses: <span>0 / 6</span></p>
+                </div>
+
+                <!-- ALL KEYS BUTTON DIV -->
+                <div id="all-keys-btn-div">
+                    <div class="keys-btn" id="keys-div-1"></div>
+                    <div class="keys-btn" id="keys-div-2"></div>
+                    <div class="keys-btn" id="keys-div-3"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+</html>

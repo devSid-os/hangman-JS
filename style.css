@@ -1,0 +1,122 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #5e63ba;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 75%;
+}
+
+#main-div {
+    background-color: white;
+    border-radius: .2em;
+    padding: 2em 1.5em;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 2em;
+}
+
+#hangman-image-div {
+    padding: 1em 0;
+    display: flex;
+    justify-content: center;
+    /* background-color: seagreen; */
+}
+
+#hangman-image-div>img {
+    width: 100%;
+}
+
+#key-stroke-div {
+    padding: 1em 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 3em;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* background-color: purple; */
+}
+
+#incorrect-guess-div {
+    display: flex;
+    justify-content: center;
+}
+
+#incorrect-guess-div > p {
+    letter-spacing: .09em;
+}
+
+#incorrect-guess-div > p > span {
+    color: red;
+}
+
+#all-keys-btn-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.keys-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.keys-btn>button {
+    transition: background .3s;
+    cursor: pointer;
+    width: 2em;
+    padding: 5px 0;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #5e63ba;
+    color: white;
+    border: none;
+    border-radius: .2em;
+}
+
+.keys-btn>button:focus {
+    outline: none;
+}
+
+.keys-btn>button:hover {
+    background-color: #9da1e9;
+}
+
+#key-stroke-div>div {
+    /* background-color: red; */
+}
+
+@media screen and (max-width: 868px) {
+    #main-div {
+        flex-direction: column;
+    }
+
+    #hangman-image-div > img {
+        width: 50%;
+    }
+
+    .keys-btn {
+        gap: .5em
+    }
+
+    .keys-btn>button {
+        font-size: .7em;
+    }
+}
