@@ -44,10 +44,24 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    gap: 3em;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* background-color: purple; */
+    gap: 2em;
+}
+
+#random-word {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+#hint-div {
+    display: flex;
+    justify-content: center;
+}
+
+#hint-div>p {
+    /* font-weight: bold; */
+    text-align: center;
+    letter-spacing: .1em;
 }
 
 #incorrect-guess-div {
@@ -55,11 +69,11 @@ main {
     justify-content: center;
 }
 
-#incorrect-guess-div > p {
+#incorrect-guess-div>p {
     letter-spacing: .09em;
 }
 
-#incorrect-guess-div > p > span {
+#incorrect-guess-div>p>span {
     color: red;
 }
 
@@ -74,7 +88,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     gap: 1em;
 }
 
@@ -83,7 +97,7 @@ main {
     cursor: pointer;
     width: 2em;
     padding: 5px 0;
-    font-size: 1em;
+    font-size: .9em;
     font-weight: bold;
     background-color: #5e63ba;
     color: white;
@@ -104,12 +118,20 @@ main {
 }
 
 @media screen and (max-width: 868px) {
+    main {
+        width: 95%;
+    }
+
     #main-div {
         flex-direction: column;
     }
 
-    #hangman-image-div > img {
+    #hangman-image-div>img {
         width: 50%;
+    }
+
+    #key-stroke-div {
+        gap: 2em;
     }
 
     .keys-btn {
