@@ -4,43 +4,95 @@
     box-sizing: border-box;
 }
 
-#overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: none;
+button {
+    border: none;
 }
 
+button:focus {
+    outline: none;
+}
+
+body,
+#main-div,
+#hangman-image-div,
+#key-stroke-div,
+#random-word,
+#hint-div,
+#incorrect-guess-div,
+#all-keys-btn-div,
+.keys-btn,
+#game_result_inner_div {
+    display: flex;
+}
+
+#game_result_inner_div,
+#key-stroke-div,
+#all-keys-btn-div {
+    flex-direction: column;
+}
+
+body,
+#game_result_outer_div,
+#game_result_inner_div {
+    justify-content: center;
+    align-items: center;
+}
+
+#overlay,
 #game_result_outer_div {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    padding: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     display: none;
+}
+
+#game_result_inner_div>p,
+.keys-btn>button {
+    font-weight: bold;
+}
+
+body,
+#game_result_reset_btn,
+.keys-btn>button {
+    background-color: #5e63ba;
+}
+
+#game_result_inner_div,
+#main-div {
+    background-color: white;
+}
+
+.keys-btn>button,
+#game_result_reset_btn {
+    cursor: pointer;
+}
+
+#game_result_reset_btn,
+.keys-btn>button {
+    color: white;
+}
+
+#game_result_inner_div,
+#game_result_reset_btn,
+#main-div,
+.keys-btn>button {
+    border-radius: .2em;
+}
+
+#overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#game_result_outer_div {
+    padding: 1em;
 }
 
 #game_result_inner_div {
     padding: 1.5em;
-    background-color: white;
-    border-radius: .2em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 1.5em;
     letter-spacing: .1em;
-}
-
-#game_result_inner_div>p {
-    font-weight: bold;
 }
 
 #game_result_inner_div>img {
@@ -49,24 +101,11 @@
 
 #game_result_reset_btn {
     padding: 1em;
-    border: none;
-    background-color: #5e63ba;
-    color: white;
-    border-radius: .2em;
-    cursor: pointer;
-}
-
-#game_result_reset_btn:focus {
-    outline: none;
 }
 
 body {
-    background-color: #5e63ba;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 main {
@@ -74,10 +113,7 @@ main {
 }
 
 #main-div {
-    background-color: white;
-    border-radius: .2em;
     padding: 2em 1.5em;
-    display: flex;
     justify-content: space-around;
     width: 100%;
     gap: 2em;
@@ -85,9 +121,7 @@ main {
 
 #hangman-image-div {
     padding: 1em 0;
-    display: flex;
     justify-content: center;
-    /* background-color: seagreen; */
 }
 
 #hangman-image-div>img {
@@ -97,31 +131,25 @@ main {
 #key-stroke-div {
     padding: 1em 0;
     flex: 1;
-    display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     gap: 2em;
 }
 
 #random-word {
-    display: flex;
     justify-content: center;
     gap: 1em;
 }
 
 #hint-div {
-    display: flex;
     justify-content: center;
 }
 
 #hint-div>p {
-    /* font-weight: bold; */
     text-align: center;
     letter-spacing: .1em;
 }
 
 #incorrect-guess-div {
-    display: flex;
     justify-content: center;
 }
 
@@ -134,15 +162,12 @@ main {
 }
 
 #all-keys-btn-div {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 1em;
 }
 
 .keys-btn {
     width: 100%;
-    display: flex;
     justify-content: center;
     align-items: stretch;
     gap: .7em;
@@ -150,19 +175,9 @@ main {
 
 .keys-btn>button {
     transition: background .3s;
-    cursor: pointer;
     width: 2em;
     padding: 5px 0;
     font-size: .9em;
-    font-weight: bold;
-    background-color: #5e63ba;
-    color: white;
-    border: none;
-    border-radius: .2em;
-}
-
-.keys-btn>button:focus {
-    outline: none;
 }
 
 .keys-btn>button:hover {
