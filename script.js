@@ -109,7 +109,29 @@ const keys = [
 
 const RANDOM_WORD = document.getElementById("random-word");
 const RANDOM_WORD_HINT = document.getElementById("random-word-hint");
+const INCORRECT_GUESS_COUNT_SPAN = document.getElementById("incorrect-guess-count");
+const HANGMAN_IMAGE_TAG = document.getElementById("hangman-image");
+const GAME_RESULT_OUTER_DIV = document.getElementById("game_result_outer_div");
+const GAME_RESULT_IMAGE_TAG = document.getElementById("game_result_image");
+const GAME_RESULT_REMARK_PARA = document.getElementById("game_result_remark");
+
 var selected_word = "";
+
+function game_over(won = false) {
+    // CREATE OVERLAY DIV
+    document.getElementById("overlay").style.display = "flex";
+    GAME_RESULT_OUTER_DIV.style.display = "flex";
+
+    if (!won) {
+        GAME_RESULT_IMAGE_TAG.setAttribute("src", "./hangman-game-images/images/lost.gif");
+        GAME_RESULT_REMARK_PARA.innerHTML = `The correct word was: <span style='color: #5e63ba'>${selected_word}</span>`;
+        return;
+    }
+
+    GAME_RESULT_IMAGE_TAG.setAttribute("src", "./hangman-game-images/images/victory.gif");
+    GAME_RESULT_REMARK_PARA.innerHTML = `You found the word: <span style='color: #5e63ba'>${selected_word}</span>`;
+
+}
 
 function select_random_word() {
     return words[Math.round(Math.random() * words.length)];
@@ -123,7 +145,8 @@ function set_random_word() {
     word = word.split("");
     word.map((char, index) => {
         const CHAR_DIV = document.createElement("div");
-        CHAR_DIV.style = "border-bottom: 2px solid black; padding: 1em"
+        CHAR_DIV.setAttribute("class", "char-div")
+        CHAR_DIV.style = "border-bottom: 2px solid black; padding: 1em;"
         CHAR_DIV.id = char;
         RANDOM_WORD.appendChild(CHAR_DIV);
     });
@@ -149,6 +172,15 @@ keys.map((row, index) => {
                     res = selected_word.indexOf(key, res + 1);
                 }
             }
+            else {
+                INCORRECT_GUESS_COUNT_SPAN.textContent = parseInt(INCORRECT_GUESS_COUNT_SPAN.textContent) + 1;
+                HANGMAN_IMAGE_TAG.setAttribute("src", `./hangman-game-images/images/hangman-${INCORRECT_GUESS_COUNT_SPAN.textContent}.svg`)
+                
+                if (parseInt(INCORRECT_GUESS_COUNT_SPAN.textContent) === 6) {
+                    game_over();
+                }
+            }
+            KEY_BTN.disabled = true;
             KEY_BTN.style = "background-color: #9da1e9";
         });
         KEYS_DIV.appendChild(KEY_BTN);
