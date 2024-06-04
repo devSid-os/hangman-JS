@@ -27,15 +27,31 @@ body,
 
 #game_result_inner_div,
 #key-stroke-div,
-#all-keys-btn-div {
+#all-keys-btn-div,
+#hangman-image-div {
     flex-direction: column;
 }
 
 body,
+#hangman-image-div,
 #game_result_outer_div,
 #game_result_inner_div {
     justify-content: center;
     align-items: center;
+}
+
+#hangman-image-div,
+#random-word,
+#hint-div,
+#incorrect-guess-div,
+.keys-btn {
+    justify-content: center;
+}
+
+#random-word,
+#all-keys-btn-div,
+#hangman-image-div {
+    gap: 1em;
 }
 
 #overlay,
@@ -121,11 +137,17 @@ main {
 
 #hangman-image-div {
     padding: 1em 0;
-    justify-content: center;
 }
 
 #hangman-image-div>img {
     width: 100%;
+}
+
+#hangman-image-div>h2 {
+    font-weight: normal;
+    letter-spacing: .2em;
+    text-align: center;
+    /* font-size: 1.2em; */
 }
 
 #key-stroke-div {
@@ -135,22 +157,9 @@ main {
     gap: 2em;
 }
 
-#random-word {
-    justify-content: center;
-    gap: 1em;
-}
-
-#hint-div {
-    justify-content: center;
-}
-
 #hint-div>p {
     text-align: center;
     letter-spacing: .1em;
-}
-
-#incorrect-guess-div {
-    justify-content: center;
 }
 
 #incorrect-guess-div>p {
@@ -163,12 +172,10 @@ main {
 
 #all-keys-btn-div {
     align-items: center;
-    gap: 1em;
 }
 
 .keys-btn {
     width: 100%;
-    justify-content: center;
     align-items: stretch;
     gap: .7em;
 }
@@ -193,9 +200,18 @@ main {
         width: 95%;
     }
 
+    #hangman-image-div {
+        flex-direction: column-reverse;
+    }
+
     #main-div {
         flex-direction: column;
     }
+
+    #hangman-image-div {
+        gap: 2em;
+    }
+
 
     #hangman-image-div>img {
         width: 50%;
