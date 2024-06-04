@@ -47,7 +47,7 @@
     width: 30%;
 }
 
-#game_result_inner_div>button {
+#game_result_reset_btn {
     padding: 1em;
     border: none;
     background-color: #5e63ba;
@@ -56,7 +56,7 @@
     cursor: pointer;
 }
 
-#game_result_inner_div>button:focus {
+#game_result_reset_btn:focus {
     outline: none;
 }
 
@@ -145,7 +145,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 1em;
+    gap: .7em;
 }
 
 .keys-btn>button {
@@ -167,10 +167,6 @@ main {
 
 .keys-btn>button:hover {
     background-color: #9da1e9;
-}
-
-#key-stroke-div>div {
-    /* background-color: red; */
 }
 
 @media screen and (max-width: 868px) {

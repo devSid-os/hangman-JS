@@ -114,8 +114,28 @@ const HANGMAN_IMAGE_TAG = document.getElementById("hangman-image");
 const GAME_RESULT_OUTER_DIV = document.getElementById("game_result_outer_div");
 const GAME_RESULT_IMAGE_TAG = document.getElementById("game_result_image");
 const GAME_RESULT_REMARK_PARA = document.getElementById("game_result_remark");
+const GAME_RESULT_RESET_BTN = document.getElementById("game_result_reset_btn");
 
 var selected_word = "";
+var selected_word_length = 0;
+
+function reset_game() {
+    GAME_RESULT_OUTER_DIV.style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+    while (RANDOM_WORD.firstChild) RANDOM_WORD.removeChild(RANDOM_WORD.firstChild);
+    keys.map((row, index) => {
+        const KEYS_DIV = document.querySelector(`#keys-div-${index + 1}`);
+        var i = 0;
+        while (i < KEYS_DIV.children.length) {
+            KEYS_DIV.children[i].disabled = false;
+            KEYS_DIV.children[i].style = "background-color: #5e63ba";
+            ++i;
+        }
+    })
+    INCORRECT_GUESS_COUNT_SPAN.textContent = 0;
+    HANGMAN_IMAGE_TAG.setAttribute("src", "hangman-game-images/images/hangman-0.svg");
+    set_random_word();
+}
 
 function game_over(won = false) {
     // CREATE OVERLAY DIV
@@ -142,6 +162,7 @@ function set_random_word() {
     RANDOM_WORD_HINT.textContent = hint;
     word = word.toLocaleUpperCase();
     selected_word = word;
+    selected_word_length = selected_word.length;
     word = word.split("");
     word.map((char, index) => {
         const CHAR_DIV = document.createElement("div");
@@ -153,9 +174,6 @@ function set_random_word() {
 }
 
 set_random_word();
-var test_str = "Siddharth"
-console.log(test_str.indexOf('d', 4))
-
 
 keys.map((row, index) => {
     const KEYS_DIV = document.querySelector(`#keys-div-${index + 1}`);
@@ -170,12 +188,16 @@ keys.map((row, index) => {
                     RANDOM_WORD.children[res].textContent = key;
                     RANDOM_WORD.children[res].style = "border: none";
                     res = selected_word.indexOf(key, res + 1);
+                    selected_word_length--;
+                }
+                if (selected_word_length === 0) {
+                    game_over(true);
                 }
             }
             else {
                 INCORRECT_GUESS_COUNT_SPAN.textContent = parseInt(INCORRECT_GUESS_COUNT_SPAN.textContent) + 1;
                 HANGMAN_IMAGE_TAG.setAttribute("src", `./hangman-game-images/images/hangman-${INCORRECT_GUESS_COUNT_SPAN.textContent}.svg`)
-                
+
                 if (parseInt(INCORRECT_GUESS_COUNT_SPAN.textContent) === 6) {
                     game_over();
                 }
@@ -187,3 +209,4 @@ keys.map((row, index) => {
     })
 })
 
+GAME_RESULT_RESET_BTN.addEventListener("click", reset_game);
